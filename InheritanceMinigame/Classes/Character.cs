@@ -1,4 +1,6 @@
 using System;
+using InheritanceMinigame.Classes;
+
 
 namespace InheritanceMinigame.Classes
 {
@@ -10,6 +12,8 @@ namespace InheritanceMinigame.Classes
         public int AttackPower { get; set; }
 
         public bool IsAlive => Health > 0;
+
+        protected string BattleCry { get; set; } = "Charge!";
 
 
         protected Character(string name, int health, int attackPower)
@@ -30,5 +34,6 @@ namespace InheritanceMinigame.Classes
             
             Console.WriteLine($"{Name} takes {damage} damage! (HP: {Health}/{MaxHealth})");
         }        public abstract void PerformAttack(Character target); 
+        
     }
 }

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using InheritanceMinigame.Classes;
 
+
+
+
 namespace InheritanceMinigame
 {
     class Program
     {
         static void Main(string[] args)
         {
+            //Character hero = new Character("Hero", 100, 10);
+
             Console.WriteLine("WELCOME TO THE INHERITANCE ARENA");
             Console.Write("Enter your hero's name: ");
             string heroName = Console.ReadLine();
@@ -21,12 +26,51 @@ namespace InheritanceMinigame
             string choice = Console.ReadLine();
                         Character player;
 
-            if (choice == "2")
-                player = new Mage(heroName);
-            else
-                player = new Warrior(heroName);
+            if (choice == "1")
+            {
+                Console.WriteLine("Are you EliteWarrior. Press Y/N");
+                choice = Console.ReadLine().ToUpper();
 
-                            Queue<Character> dungeonEnemies = new Queue<Character>();
+                if (choice== "Y" || choice =="y")
+                    player = new EliteWarrior(heroName);
+                else
+                    player = new Warrior(heroName);
+                    
+            }
+            else
+            {
+                player = new Mage(heroName);
+            }
+
+
+
+            if (player is Mage)
+        {
+            Console.WriteLine("This character is a mage.");
+        }
+            else
+        {
+            Console.WriteLine("This character is not a mage.");
+        }
+
+            if (player is Warrior warrior)
+        {
+            Console.WriteLine($"{warrior.Name} has a shield block of {warrior.ShieldBlock}.");
+        }
+
+        Mage? mage = player as Mage;
+
+        if (mage != null)
+        {
+            Console.WriteLine($"{mage.Name} is a mage with {mage.Mana} mana.");
+        }
+        else
+        {
+            Console.WriteLine("The player is not a Mage.");
+        }
+
+
+                 Queue<Character> dungeonEnemies = new Queue<Character>();
             dungeonEnemies.Enqueue(new Goblin("Gorg the Sneaky"));
             dungeonEnemies.Enqueue(new Goblin("Zib the Vile"));
             dungeonEnemies.Enqueue(new Dragon("Ignis the Flame-Bringer"));

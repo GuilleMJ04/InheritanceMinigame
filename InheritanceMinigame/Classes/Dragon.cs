@@ -3,10 +3,15 @@ using System;
 namespace InheritanceMinigame.Classes
 {
     public class Dragon : Character
-    {        public Dragon(string name) : base(name, 200, 20) { }
-            public override void PerformAttack(Character target)
+    {
+        public Dragon(string name) : base(name, 200, 20)
         {
-            Console.WriteLine($"{Name} breathes devastating fire across the battlefield!");
+            BattleCry = "ROAAAR!";
+        }
+
+        public override void PerformAttack(Character target)
+        {
+            Console.WriteLine($"{Name} roars '{BattleCry}' and breathes devastating fire across the battlefield!");
             target.TakeDamage(AttackPower);
         }
     }
